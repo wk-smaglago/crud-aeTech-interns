@@ -5,7 +5,7 @@ This documentation provides details on how to interact with the Products API end
 ## Base URL
 
 ```
-/api/products
+https://crud-ae-tech-interns-vzuj.vercel.app
 ```
 
 ## Endpoints
