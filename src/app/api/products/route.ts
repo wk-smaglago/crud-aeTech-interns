@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { addProduct, getProducts } from "@/lib/mockDatabase";
 
 // GET all products
 export async function GET() {
+  const products = getProducts();
   return NextResponse.json(products);
 }
 
@@ -18,15 +20,12 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    const newProduct = {
-      id: Date.now().toString(),
+    const newProduct = addProduct({
       name: body.name,
       description: body.description || "",
       price: body.price,
       stock: body.stock || 0
-    };
-    
-    products.push(newProduct);
+    });
     
     return NextResponse.json(newProduct, { status: 201 });
   } catch (error) {
@@ -36,4 +35,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
